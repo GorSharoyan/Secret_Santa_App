@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function PlayerSelectionInput() {
   const [playersQty, setPlayerQty] = useState("");
@@ -10,11 +10,8 @@ export default function PlayerSelectionInput() {
 
   const handlePlayerSelectionSubmit = () => {
     localStorage.setItem("playersQty", playersQty);
+    window.location.reload();
   };
-
-  useEffect(() => {
-    setPlayerQtyArray();
-  }, [playersQty]);
 
   return (
     <div>

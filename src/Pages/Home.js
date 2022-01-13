@@ -5,7 +5,7 @@ import SecretSantaCardGenerator from "../Components/SecretSantaCardGenerator/Sec
 export default function Home() {
   return (
     <div>
-      {/* <PlayerSelectionInput /> */}
+      <PlayerSelectionInput />
       <SecretSantaCardGenerator />
     </div>
   );

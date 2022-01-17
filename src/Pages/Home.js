@@ -3,6 +3,7 @@ import PlayerSelectionInput from "../Components/PlayerSelectionInput/PlayerSelec
 import SecretSantaCardGenerator from "../Components/SecretSantaCardGenerator/SecretSantaCardGenerator";
 
 export default function Home() {
+  const handelSubmit = () => {};
   return (
     <div>
       <PlayerSelectionInput />

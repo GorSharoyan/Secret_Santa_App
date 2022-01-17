@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
@@ -6,6 +6,13 @@ import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
+  const [inputField, setInputField] =
+    useState[
+      {
+        name: "",
+        email: ""
+      }
+    ];
 
   const createRowsArray = () => {
     for (let i = 1; i <= playersQty; i++) {
@@ -18,6 +25,7 @@ export default function SecretSantaCardGenerator() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("submition");
+    console.log(event.target.value);
   };
 
   return (

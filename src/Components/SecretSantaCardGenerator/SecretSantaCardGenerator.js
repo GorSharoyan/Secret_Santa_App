@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
 import FormField from "../FormField/Formfield";
 
+//services
+import generateRandomId from "../../Services/idGenerator.service";
+
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
-  const [inputFields, setInputFields] = useState([{ name: "", email: "" }]);
+  const [inputFields, setInputFields] = useState([
+    { id: "", name: "", email: " " }
+  ]);
 
   const createRowsArray = () => {
-    for (let i = 1; i <= playersQty; i++) {
-      playersQtyArray.push(i);
+    for (let i = 0; i <= playersQty; i++) {
+      playersQtyArray.push({ id: i, name: "", email: "" });
     }
   };
 
@@ -25,9 +30,12 @@ export default function SecretSantaCardGenerator() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("submition");
     console.log(inputFields);
   };
+
+  useEffect(() => {
+    setInputFields(playersQtyArray);
+  }, []);
 
   return (
     <form>
@@ -37,14 +45,14 @@ export default function SecretSantaCardGenerator() {
             <input
               type="text"
               placeholder="name"
-              value={inputFields.name}
-              onChange={handleInputChange}
+              name="name"
+              onChange={(event) => handleInputChange(el.id, event)}
             ></input>
             <input
               type="email"
               placeholder="email"
-              value={inputFields.email}
-              onChange={handleInputChange}
+              name="email"
+              onChange={(event) => handleInputChange(el.id, event)}
             ></input>
           </div>
         );

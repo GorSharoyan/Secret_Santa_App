@@ -1,0 +1,9 @@
+.input {
+    padding: 5px;
+}
+
+.formField {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}

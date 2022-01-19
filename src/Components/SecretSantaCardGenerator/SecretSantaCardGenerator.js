@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
 
+//UI
+import "./SecretSantaCardGenerator.css";
+import { Button } from "@mui/material";
+
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
@@ -11,7 +15,7 @@ export default function SecretSantaCardGenerator() {
   ]);
 
   const createRowsArray = () => {
-    for (let i = 0; i <= playersQty; i++) {
+    for (let i = 1; i <= playersQty; i++) {
       playersQtyArray.push({ id: i, name: "", email: "" });
     }
   };
@@ -36,19 +40,25 @@ export default function SecretSantaCardGenerator() {
 
   return (
     <form>
-      {playersQtyArray.map((el) => {
-        return (
-          <div>
-            <SecretSantaCard
-              number={el.id + 1}
-              name="name"
-              email="email"
-              onChange={(event) => handleInputChange(el.id, event)}
-            />
-          </div>
-        );
-      })}
-      <button onClick={handleFormSubmit}>Submit</button>
+      <div className="cardBox">
+        {playersQtyArray.map((el) => {
+          return (
+            <div>
+              <SecretSantaCard
+                number={el.id}
+                name="name"
+                email="email"
+                onChange={(event) => handleInputChange(el.id, event)}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="button">
+        <Button onClick={handleFormSubmit} variant="contained">
+          Submit
+        </Button>
+      </div>
     </form>
   );
 }

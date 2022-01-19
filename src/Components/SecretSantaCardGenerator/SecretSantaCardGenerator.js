@@ -4,9 +4,6 @@ import React, { useState, useEffect } from "react";
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
 import FormField from "../FormField/Formfield";
 
-//services
-import generateRandomId from "../../Services/idGenerator.service";
-
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
@@ -31,6 +28,7 @@ export default function SecretSantaCardGenerator() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(inputFields);
+    localStorage.setItem("playerNames", inputFields);
   };
 
   useEffect(() => {
@@ -48,6 +46,7 @@ export default function SecretSantaCardGenerator() {
               name="name"
               onChange={(event) => handleInputChange(el.id, event)}
             ></input>
+            <FormField />
             <input
               type="email"
               placeholder="email"

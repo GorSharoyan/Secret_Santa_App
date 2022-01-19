@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
-import FormField from "../FormField/Formfield";
 
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));

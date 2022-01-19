@@ -1,10 +1,10 @@
 import React from "react";
+
 //UI
 import { Card, CardContent, Typography } from "@mui/material";
-// import CardContent from "@mui/material/CardContent";
 
 //Components
-import FormField from "../FormField/Formfield";
+import FormField from "../FormField/FormField";
 
 export default function SecretSantaCard({ number, name, email, onChange }) {
   return (

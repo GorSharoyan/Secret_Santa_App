@@ -40,19 +40,12 @@ export default function SecretSantaCardGenerator() {
       {playersQtyArray.map((el) => {
         return (
           <div>
-            <input
-              type="text"
-              placeholder="name"
+            <SecretSantaCard
+              number={el.id + 1}
               name="name"
+              email="email"
               onChange={(event) => handleInputChange(el.id, event)}
-            ></input>
-            <FormField />
-            <input
-              type="email"
-              placeholder="email"
-              name="email"
-              onChange={(event) => handleInputChange(el.id, event)}
-            ></input>
+            />
           </div>
         );
       })}

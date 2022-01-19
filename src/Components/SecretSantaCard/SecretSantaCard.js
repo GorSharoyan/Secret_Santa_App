@@ -1,20 +1,17 @@
 import React from "react";
 //UI
-// import { Card } from "@mui/material";
-
-//Formik
-import { Formik } from "formik";
+import { Card } from "@mui/material";
 
 //Components
 import FormField from "../FormField/Formfield";
 
-export default function SecretSantaCard({ number }) {
+export default function SecretSantaCard({ number, name, email, onChange }) {
   return (
-    <div>
+    <Card>
       <div>Secret Santa # {number}</div>
       <div>
-        <FormField />
+        <FormField name={name} email={email} onChange={onChange} />
       </div>
-    </div>
+    </Card>
   );
 }

@@ -3,22 +3,21 @@ import React from "react";
 //UI
 import TextField from "@mui/material/TextField";
 
-export default function FormField({ name, email, onChange }) {
+export default function FormField({ onChange }) {
   return (
-    <TextField />
-    // <div>
-    //   <input
-    //     type="text"
-    //     value={name}
-    //     placeholder="name"
-    //     onChange={onChange}
-    //   ></input>
-    //   <input
-    //     type="email"
-    //     value={email}
-    //     placeholder="email"
-    //     onChange={onChange}
-    //   ></input>
-    // </div>
+    <div>
+      <TextField
+        type="text"
+        placeholder="name"
+        name="name"
+        onChange={onChange}
+      />
+      <TextField
+        type="email"
+        placeholder="email"
+        name="email"
+        onChange={onChange}
+      />
+    </div>
   );
 }

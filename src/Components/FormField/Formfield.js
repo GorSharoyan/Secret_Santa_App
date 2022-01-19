@@ -9,6 +9,7 @@ export default function FormField({ onChange }) {
     <div className="formField">
       <div className="input">
         <TextField
+          size="small"
           variant="filled"
           type="text"
           placeholder="name"
@@ -18,6 +19,7 @@ export default function FormField({ onChange }) {
       </div>
       <div>
         <TextField
+          size="small"
           variant="filled"
           type="email"
           placeholder="email"

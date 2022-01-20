@@ -15,7 +15,7 @@ export default function SecretSantaCardGenerator() {
   ]);
 
   const createRowsArray = () => {
-    for (let i = 1; i <= playersQty; i++) {
+    for (let i = 0; i < playersQty; i++) {
       playersQtyArray.push({ id: i, name: "", email: "" });
     }
   };
@@ -45,7 +45,7 @@ export default function SecretSantaCardGenerator() {
           return (
             <div>
               <SecretSantaCard
-                number={el.id}
+                number={el.id + 1}
                 name="name"
                 email="email"
                 onChange={(event) => handleInputChange(el.id, event)}

@@ -7,6 +7,9 @@ import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
 import "./SecretSantaCardGenerator.css";
 import { Button } from "@mui/material";
 
+//services
+import randomiseArray from "../../Services/randomiseArray.service";
+
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
@@ -28,10 +31,10 @@ export default function SecretSantaCardGenerator() {
     setInputFields(values);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputFields);
-    localStorage.setItem("playerNames", inputFields);
+  const handleFormSubmit = () => {
+    const inputValues = inputFields;
+    randomiseArray(inputValues);
+    localStorage.setItem("group1", inputFields);
   };
 
   useEffect(() => {

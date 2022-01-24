@@ -36,7 +36,8 @@ export default function SecretSantaCardGenerator() {
   const handleFormSubmit = () => {
     const inputValues = inputFields;
     const randomisedValues = randomiseArray(inputValues);
-    console.log(createPlayerPairs(randomisedValues));
+    const playerPairs = createPlayerPairs(randomisedValues);
+    localStorage.setItem("playersList", playerPairs);
   };
 
   useEffect(() => {

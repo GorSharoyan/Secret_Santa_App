@@ -1,5 +1,4 @@
 //Array Randomising function using Fisher-Yates algorythm
-
 export default function randomiseArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
@@ -10,7 +9,8 @@ export default function randomiseArray(arr) {
   return arr;
 }
 
-function makePairs(arr) {
+//Pair creating function
+export function createPlayerPairs(arr) {
   let pairs = [];
   //step 1
   //determine sub arrays of rescievers and senders
@@ -30,5 +30,5 @@ function makePairs(arr) {
   for (let i = 0; i < senders2.length; i++) {
     pairs.push({ sender: senders2[i], resciever: rescievers2[i] });
   }
-  console.log(pairs);
+  return pairs;
 }

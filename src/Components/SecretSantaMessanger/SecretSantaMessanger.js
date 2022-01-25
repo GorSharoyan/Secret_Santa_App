@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ({ resciver }) {
+export default function SecretSantaMessanger({ resciver }) {
   return (
     <div>
       <form action={`https://formsubmit.co/${resciver.email}`} method="POST">

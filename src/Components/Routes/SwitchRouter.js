@@ -1,12 +1,19 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+//components
+import SecretSantaMessanger from "../SecretSantaMessanger/SecretSantaMessanger";
+
+//pages
+import Home from "../../Pages/Home";
 
 export default function SwitchRouter() {
   return (
     <main>
-      <Switch>
-        <Route path="/mail"></Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/messanger" element={<SecretSantaMessanger />} />
+      </Routes>
     </main>
   );
 }

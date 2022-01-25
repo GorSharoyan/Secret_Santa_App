@@ -1,13 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
-import SecretSantaCard from "./Components/SecretSantaCard/SecretSantaCard";
+
+//routes
+import SwitchRouter from "./Components/Routes/SwitchRouter";
 
 //pages
 import Home from "./Pages/Home";
+
 function App() {
   return (
     <div className="App">
-      <Home />
+      <SwitchRouter />
     </div>
   );
 }

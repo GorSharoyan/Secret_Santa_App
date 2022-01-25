@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
@@ -18,6 +19,7 @@ export default function SecretSantaCardGenerator() {
   const [inputFields, setInputFields] = useState([
     { id: "", name: "", email: " " }
   ]);
+  const navigate = useNavigate();
 
   const createRowsArray = () => {
     for (let i = 0; i < playersQty; i++) {
@@ -38,6 +40,7 @@ export default function SecretSantaCardGenerator() {
     const randomisedValues = randomiseArray(inputValues);
     const playerPairs = createPlayerPairs(randomisedValues);
     localStorage.setItem("playersList", playerPairs);
+    navigate("/messanger");
   };
 
   useEffect(() => {

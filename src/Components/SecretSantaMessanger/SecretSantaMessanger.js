@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 
+//services
+import { getAllData } from "../../Services/firebase.service";
+
 export default function SecretSantaMessanger() {
   const [players, setPlayers] = useState([]);
+
   useEffect(() => {
-    const playersList = JSON.parse(localStorage.getItem("playersList"));
-    console.log(playersList);
+    setPlayers(getAllData("/players"));
+    console.log(players);
   }, []);
   return (
     <div>

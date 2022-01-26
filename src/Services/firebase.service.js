@@ -21,7 +21,9 @@ export function getData(path, id) {
 }
 //ALL
 export function getAllData(path) {
-  return database
+  return;
+  firebase
+    .database()
     .ref(path)
     .once("value")
     .then(function (response) {

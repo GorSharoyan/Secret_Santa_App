@@ -53,7 +53,7 @@ export default function SecretSantaCardGenerator() {
       <div className="cardBox">
         {playersQtyArray.map((el) => {
           return (
-            <div>
+            <div key={el.id}>
               <SecretSantaCard
                 number={el.id + 1}
                 name="name"

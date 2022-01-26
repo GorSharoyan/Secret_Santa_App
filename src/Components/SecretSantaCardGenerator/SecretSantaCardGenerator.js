@@ -12,6 +12,7 @@ import { Button } from "@mui/material";
 import randomiseArray, {
   createPlayerPairs
 } from "../../Services/randomiseArray.service";
+import { createData } from "../../Services/firebase.service";
 
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
@@ -35,13 +36,12 @@ export default function SecretSantaCardGenerator() {
     setInputFields(values);
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     const inputValues = inputFields;
     const randomisedValues = randomiseArray(inputValues);
     const playerPairs = createPlayerPairs(randomisedValues);
-
-    localStorage.setItem("playersList", playerPairs);
-    navigate("/messanger");
+    await createData("/players/", playerPairs);
+    await navigate("/messanger");
   };
 
   useEffect(() => {

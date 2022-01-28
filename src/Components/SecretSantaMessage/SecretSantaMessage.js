@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function SecretSantaMessage({ sender, resciever }) {
+  console.log("sender", sender);
   return (
     <div>
       <h1>Congratulations!!!</h1>

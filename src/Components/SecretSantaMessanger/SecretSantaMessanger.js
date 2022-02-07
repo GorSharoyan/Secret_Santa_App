@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 //services
 import { getAllData } from "../../Services/firebase.service";
+import sendGridMailer from "../../Services/sendgrid.service";
+
 //components
 import SecretSantaMessage from "../SecretSantaMessage/SecretSantaMessage";
 
@@ -12,37 +14,21 @@ export default function SecretSantaMessanger() {
     getAllData("/players").then((element) => {
       let parsedPlayerValues = Object.values(element);
       setPlayers(parsedPlayerValues);
-      console.log(players);
     });
   }, []);
 
+  const handleMailing = async () => {
+    await players.map((el) => {
+      sendGridMailer.send(
+        <SecretSantaMessage sender={el.resciever} resciever={el.sender} />
+      );
+    });
+    await console.log("Mailing done succefully ");
+  };
+
   return (
     <div>
-      {players.map((el) => {
-        console.log(el);
-        console.log(el.resciever.email);
-        return (
-          <div key={el.resciever.id}>
-            <form
-              action={`https://formsubmit.co/${el.resciever.email}`}
-              method="POST"
-            >
-              <input
-                type="text"
-                name="name"
-                value={
-                  <SecretSantaMessage
-                    sender={el.resciever.name}
-                    resciever={el.sender.name}
-                  />
-                }
-              ></input>
-
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        );
-      })}
+      <button onClick={handleMailing}>Begin Emailing </button>
     </div>
   );
 }

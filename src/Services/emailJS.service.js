@@ -3,7 +3,12 @@ import React from "react";
 
 export default function sendEmail(data) {
   emailjs
-    .sendForm("gmail", "youtube_template", data, "user_JABO21I8Gm6sxByJH17Nu")
+    .sendForm(
+      "service_s7gpu48",
+      "template_v4pvfn9",
+      data,
+      "user_oEXDyu2Xll8SqLLxLLIgw"
+    )
     .then(
       (result) => {
         console.log(result.text);

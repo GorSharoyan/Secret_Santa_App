@@ -18,21 +18,8 @@ export default function SecretSantaMessanger() {
     });
   }, []);
 
-  //useEffect for <script> tag creation in order to use the lib
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://smtpjs.com/v3/smtp.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
   const handleMailing = () => {
-    sendMail(
-      "gor.sharoyan95@gmail.com",
-      "gor.sharoyan95@gmail.com",
-      "gago",
-      "gago"
-    );
+    console.log(players);
   };
 
   return (

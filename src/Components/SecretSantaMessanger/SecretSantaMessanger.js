@@ -7,6 +7,17 @@ import sendMail from "../../Services/emailJS.service";
 //components
 import SecretSantaMessage from "../SecretSantaMessage/SecretSantaMessage";
 
+// const express = require("express");
+// const bodyParser = require("body-parser");
+// const mailer = require("../../Services/nodeMailer.service");
+
+// const app = express();
+
+// const PORT = 3001;
+
+// app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+// app.use(bodyParser.urlencoded({ extended: false }));
+
 export default function SecretSantaMessanger() {
   const [players, setPlayers] = useState([]);
 

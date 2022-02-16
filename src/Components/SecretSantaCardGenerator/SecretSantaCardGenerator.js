@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 //components
@@ -13,6 +13,7 @@ import randomiseArray, {
   createPlayerPairs
 } from "../../Services/randomiseArray.service";
 import { createData } from "../../Services/firebase.service";
+import sendMail from "../../Services/emailJS.service";
 
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
@@ -21,6 +22,7 @@ export default function SecretSantaCardGenerator() {
     { id: "", name: "", email: " " }
   ]);
   const navigate = useNavigate();
+  const form = useRef();
 
   const createRowsArray = () => {
     for (let i = 0; i < playersQty; i++) {
@@ -41,6 +43,7 @@ export default function SecretSantaCardGenerator() {
     const randomisedValues = randomiseArray(inputValues);
     const playerPairs = createPlayerPairs(randomisedValues);
     await createData("/players/", playerPairs);
+    // await sendMail(form.current);
     await navigate("/messanger");
   };
 
@@ -49,7 +52,7 @@ export default function SecretSantaCardGenerator() {
   }, []);
 
   return (
-    <form>
+    <form ref={form}>
       <div className="cardBox">
         {playersQtyArray.map((el) => {
           return (

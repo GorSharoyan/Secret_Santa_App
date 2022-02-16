@@ -10,7 +10,6 @@ import SecretSantaMessage from "../SecretSantaMessage/SecretSantaMessage";
 export default function SecretSantaMessanger() {
   const [players, setPlayers] = useState([]);
 
-  //useEffect for players names encapsulation
   useEffect(() => {
     getAllData("/players").then((element) => {
       let parsedPlayerValues = Object.values(element);
@@ -18,13 +17,14 @@ export default function SecretSantaMessanger() {
     });
   }, []);
 
-  const handleMailing = () => {
-    console.log(players);
+  const handleMailing = (e) => {
+    e.preventDefault();
+    sendMail({});
   };
 
   return (
-    <div>
+    <form onSubmit={handleMailing}>
       <button onClick={handleMailing}>Begin Emailing </button>
-    </div>
+    </form>
   );
 }

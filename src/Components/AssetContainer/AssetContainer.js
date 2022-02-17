@@ -3,12 +3,12 @@ import { useEffect, useRef } from "react";
 
 //UI
 import Card from "@mui/material/Card";
+// import "../AssetContainer/AssetContainer.css";
 
 //lottie
 import lottie from "lottie-web";
 
 export default function AssetContainer({ assetLink }) {
-  const classes = useStyles();
   const container = useRef(null);
   console.log(assetLink);
 
@@ -19,9 +19,5 @@ export default function AssetContainer({ assetLink }) {
     });
   }, []);
 
-  return (
-    <Card className={classes.root}>
-      <div ref={container}></div>
-    </Card>
-  );
+  return <div ref={container}></div>;
 }

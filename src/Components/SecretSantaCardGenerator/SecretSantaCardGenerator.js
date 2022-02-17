@@ -14,7 +14,7 @@ import randomiseArray, {
   createPlayerPairs
 } from "../../Services/randomiseArray.service";
 import { createData } from "../../Services/firebase.service";
-import sendMail from "../../Services/emailJS.service";
+import { sendEmailMessage } from "../../Services/emailJS.service";
 
 export default function SecretSantaCardGenerator() {
   const playersQty = Number(localStorage.getItem("playersQty"));
@@ -44,7 +44,9 @@ export default function SecretSantaCardGenerator() {
     const inputValues = inputFields;
     const randomisedValues = randomiseArray(inputValues);
     const playerPairs = createPlayerPairs(randomisedValues);
-    await createData("/players/", playerPairs);
+    await playerPairs.map((e) =>
+      sendEmailMessage(e.resciever.email, e.resciever.name, e.sender.name)
+    );
     await navigate("/messanger");
   };
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //services
 import { validateNumberOfPlayers } from "../../Services/validation.services";
@@ -6,16 +7,18 @@ import { validateNumberOfPlayers } from "../../Services/validation.services";
 export default function PlayerSelectionInput() {
   const [playersQty, setPlayerQty] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handlePlayerSelectionInput = (event) => {
     setError(validateNumberOfPlayers(event.target.value));
     setPlayerQty(event.target.value);
   };
 
-  const handlePlayerSelectionSubmit = () => {
+  const handlePlayerSelectionSubmit = async (event) => {
+    event.preventDefault();
     if (error === false) {
-      localStorage.setItem("playersQty", playersQty);
-      window.location.reload();
+      await localStorage.setItem("playersQty", playersQty);
+      await navigate("/playingPage");
     }
   };
 

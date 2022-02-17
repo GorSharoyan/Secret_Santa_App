@@ -13,7 +13,7 @@ import { Button } from "@mui/material";
 import randomiseArray, {
   createPlayerPairs
 } from "../../Services/randomiseArray.service";
-import { createData } from "../../Services/firebase.service";
+// import { createData } from "../../Services/firebase.service";
 import { sendEmailMessage } from "../../Services/emailJS.service";
 
 export default function SecretSantaCardGenerator() {
@@ -23,7 +23,6 @@ export default function SecretSantaCardGenerator() {
     { id: "", name: "", email: " " }
   ]);
   const navigate = useNavigate();
-  const form = useRef();
   init("user_oEXDyu2Xll8SqLLxLLIgw");
 
   const createRowsArray = () => {
@@ -47,7 +46,7 @@ export default function SecretSantaCardGenerator() {
     await playerPairs.map((e) =>
       sendEmailMessage(e.resciever.email, e.resciever.name, e.sender.name)
     );
-    await navigate("/messanger");
+    await navigate("/congratsPage");
   };
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export default function SecretSantaCardGenerator() {
   }, []);
 
   return (
-    <form ref={form}>
+    <form>
       <div className="cardBox">
         {playersQtyArray.map((el) => {
           return (

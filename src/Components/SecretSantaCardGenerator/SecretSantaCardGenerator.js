@@ -45,8 +45,7 @@ export default function SecretSantaCardGenerator() {
     const randomisedValues = randomiseArray(inputValues);
     const playerPairs = createPlayerPairs(randomisedValues);
     await createData("/players/", playerPairs);
-    await sendMail({ name: "Gor" });
-    // await navigate("/messanger");
+    await navigate("/messanger");
   };
 
   useEffect(() => {

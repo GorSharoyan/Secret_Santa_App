@@ -2,6 +2,7 @@ import React from "react";
 
 //assets
 import landingAsset from "../../Assets/landingAsset.json";
+import secretSanta from "../../Assets/secretSanta.json";
 
 //UI
 import "./LandingAssetContainer.css";

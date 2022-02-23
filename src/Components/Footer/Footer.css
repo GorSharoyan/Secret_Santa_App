@@ -1,0 +1,14 @@
+.root{   
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    align-items: space-between;
+    padding : 30px;
+    background-color: #C0C0C0;
+
+  }
+  
+.container {
+    margin-left: 50px;
+  }

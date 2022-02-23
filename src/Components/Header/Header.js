@@ -12,7 +12,7 @@ export default function Header() {
     <div className="root">
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}></Typography>
+          <Typography variant="h6"></Typography>
         </Toolbar>
       </AppBar>
     </div>

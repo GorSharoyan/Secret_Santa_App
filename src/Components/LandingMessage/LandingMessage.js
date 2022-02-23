@@ -10,7 +10,6 @@ export default function LandingMessage() {
         <br></br>
         {newYear} is almost here! Its time wake up the Santa!
       </h2>
-      <h4>Please select the number of players</h4>
     </div>
   );
 }

@@ -24,6 +24,7 @@ export default function PlayerSelectionInput() {
 
   return (
     <div>
+      <h4>Please select the number of players</h4>
       <input
         type="number"
         onChange={handlePlayerSelectionInput}

@@ -12,9 +12,8 @@ export default function PlayingPage() {
   return (
     <div className="page">
       <LandingMessage />
-
-      <LandingAsset />
       <PlayerSelectionInput />
+      <LandingAsset />
     </div>
   );
 }

@@ -1,8 +1,12 @@
 .root{
-    flex-grow:1;
-  }
+    margin-Bottom: "2px";
+    flex-Grow: 1;
+    }
 
- 
+ /* .conatiner{
+    border: 3px solid green;
+    } */
+
   title {
     flex-grow: 1
   }

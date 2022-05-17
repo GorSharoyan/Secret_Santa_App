@@ -4,6 +4,7 @@ import { init } from "@emailjs/browser";
 
 //components
 import SecretSantaCard from "../SecretSantaCard/SecretSantaCard";
+import Pagination from "../Pagination/Pagination";
 
 //UI
 import "./SecretSantaCardGenerator.css";
@@ -69,6 +70,7 @@ export default function SecretSantaCardGenerator() {
           );
         })}
       </div>
+      <Pagination currentCards={10} totalCards={100} />
       <div className="button">
         <Button onClick={handleFormSubmit} variant="contained">
           Submit

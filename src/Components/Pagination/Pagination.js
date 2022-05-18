@@ -3,7 +3,11 @@ import React from "react";
 //UI
 import "./Pagination.css";
 
-export default function Pagination({ currentCards, totalCards }) {
+export default function Pagination({
+  currentCards,
+  totalCards,
+  handlePageChange
+}) {
   let pageCount = [];
 
   for (let i = 1; i < Math.ceil(totalCards / currentCards); i++) {
@@ -14,11 +18,9 @@ export default function Pagination({ currentCards, totalCards }) {
     <div>
       <ol className="pagination">
         {pageCount.map((element) => {
-          console.log(pageCount);
-          console.log(element);
           return (
             <ui className="pageNumber">
-              <a>{element}</a>
+              <a onClick={handlePageChange}>{element}</a>
             </ui>
           );
         })}

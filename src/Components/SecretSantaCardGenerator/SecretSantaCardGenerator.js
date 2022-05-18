@@ -14,17 +14,30 @@ import { Button } from "@mui/material";
 import randomiseArray, {
   createPlayerPairs
 } from "../../Services/randomiseArray.service";
-// import { createData } from "../../Services/firebase.service";
 import { sendEmailMessage } from "../../Services/emailJS.service";
 
 export default function SecretSantaCardGenerator() {
+  //players quntity hooks
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
   const [inputFields, setInputFields] = useState([
     { id: "", name: "", email: " " }
   ]);
+  // pagination hooks
+  const [playersPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  //navigation hooks
   const navigate = useNavigate();
+  //Mailing Client hooks
   init("user_oEXDyu2Xll8SqLLxLLIgw");
+
+  const lastPlayerIndex = currentPage * playersPerPage;
+  const firstPlayerIndex = lastPlayerIndex - playersPerPage;
+  const currentPlayers = playersQtyArray.slice(
+    firstPlayerIndex,
+    lastPlayerIndex
+  );
 
   const createRowsArray = () => {
     for (let i = 0; i < playersQty; i++) {
@@ -34,6 +47,7 @@ export default function SecretSantaCardGenerator() {
 
   createRowsArray();
 
+  //handlers
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
     values[index][event.target.name] = event.target.value;
@@ -48,6 +62,10 @@ export default function SecretSantaCardGenerator() {
       sendEmailMessage(e.resciever.email, e.resciever.name, e.sender.name)
     );
     await navigate("/congratsPage");
+  };
+
+  const handelPageChange = () => {
+    console.log("clcked");
   };
 
   useEffect(() => {
@@ -70,7 +88,11 @@ export default function SecretSantaCardGenerator() {
           );
         })}
       </div>
-      <Pagination currentCards={10} totalCards={100} />
+      <Pagination
+        currentCards={playersPerPage}
+        totalCards={playersQtyArray.length}
+        handlePageChange={handelPageChange}
+      />
       <div className="button">
         <Button onClick={handleFormSubmit} variant="contained">
           Submit

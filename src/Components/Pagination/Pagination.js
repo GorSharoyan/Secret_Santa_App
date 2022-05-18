@@ -20,7 +20,13 @@ export default function Pagination({
         {pageCount.map((element) => {
           return (
             <ui className="pageNumber">
-              <a onClick={handlePageChange}>{element}</a>
+              <a
+                onClick={() => {
+                  handlePageChange(element);
+                }}
+              >
+                {element}
+              </a>
             </ui>
           );
         })}

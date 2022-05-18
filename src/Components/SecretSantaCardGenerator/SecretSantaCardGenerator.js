@@ -64,8 +64,8 @@ export default function SecretSantaCardGenerator() {
     await navigate("/congratsPage");
   };
 
-  const handelPageChange = () => {
-    console.log("clcked");
+  const handelPageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {

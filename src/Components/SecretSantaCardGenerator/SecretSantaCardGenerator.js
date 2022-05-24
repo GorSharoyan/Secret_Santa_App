@@ -10,6 +10,8 @@ import Pagination from "../Pagination/Pagination";
 import "./SecretSantaCardGenerator.css";
 import { Button } from "@mui/material";
 
+//assets
+import SantaImagesArray from "../../Assets/SantaImages/santaImages";
 //services
 import randomiseArray, {
   createPlayerPairs
@@ -66,7 +68,6 @@ export default function SecretSantaCardGenerator() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    console.log("click");
   };
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export default function SecretSantaCardGenerator() {
           return (
             <div key={el.id}>
               <SecretSantaCard
+                imageLink={SantaImagesArray[Math.floor(Math.random() * 10)]}
                 number={el.id + 1}
                 name="name"
                 email="email"

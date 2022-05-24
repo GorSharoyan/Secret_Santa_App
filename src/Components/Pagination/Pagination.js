@@ -21,6 +21,7 @@ export default function Pagination({
           return (
             <ui className="pageNumber">
               <a
+                className="clicker"
                 onClick={() => {
                   handlePageChange(element);
                 }}

@@ -7,10 +7,16 @@ import "./SecretSantaCard.css";
 //Components
 import FormField from "../FormField/FormField";
 
-export default function SecretSantaCard({ number, name, email, onChange }) {
+export default function SecretSantaCard({
+  number,
+  name,
+  email,
+  onChange,
+  imageLink
+}) {
   return (
     <Card className="card">
-      {/* <div className="card"> */}
+      <img src={imageLink} style={{ borderRadius: "30px" }} />
       <div>
         <Typography
           gutterBottom
@@ -26,7 +32,6 @@ export default function SecretSantaCard({ number, name, email, onChange }) {
           <FormField name={name} email={email} onChange={onChange} />
         </CardContent>
       </div>
-      {/* </div> */}
     </Card>
   );
 }

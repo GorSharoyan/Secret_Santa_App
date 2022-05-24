@@ -10,7 +10,6 @@ import lottie from "lottie-web";
 
 export default function AssetContainer({ assetLink }) {
   const container = useRef(null);
-  console.log(assetLink);
 
   useEffect(() => {
     lottie.loadAnimation({

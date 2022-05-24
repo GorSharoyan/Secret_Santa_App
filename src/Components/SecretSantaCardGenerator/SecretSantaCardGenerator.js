@@ -17,27 +17,20 @@ import randomiseArray, {
 import { sendEmailMessage } from "../../Services/emailJS.service";
 
 export default function SecretSantaCardGenerator() {
-  //players quntity hooks
+  //players quantity hooks
   const playersQty = Number(localStorage.getItem("playersQty"));
   const playersQtyArray = [];
   const [inputFields, setInputFields] = useState([
     { id: "", name: "", email: " " }
   ]);
-  // pagination hooks
-  const [playersPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
-
   //navigation hooks
   const navigate = useNavigate();
   //Mailing Client hooks
   init("user_oEXDyu2Xll8SqLLxLLIgw");
 
-  const lastPlayerIndex = currentPage * playersPerPage;
-  const firstPlayerIndex = lastPlayerIndex - playersPerPage;
-  const currentPlayers = playersQtyArray.slice(
-    firstPlayerIndex,
-    lastPlayerIndex
-  );
+  // pagination hooks
+  const [playersPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const createRowsArray = () => {
     for (let i = 0; i < playersQty; i++) {
@@ -46,6 +39,13 @@ export default function SecretSantaCardGenerator() {
   };
 
   createRowsArray();
+
+  const lastPlayerIndex = currentPage * playersPerPage;
+  const firstPlayerIndex = lastPlayerIndex - playersPerPage;
+  const currentPlayers = playersQtyArray.slice(
+    firstPlayerIndex,
+    lastPlayerIndex
+  );
 
   //handlers
   const handleInputChange = (index, event) => {
@@ -64,18 +64,19 @@ export default function SecretSantaCardGenerator() {
     await navigate("/congratsPage");
   };
 
-  const handelPageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    console.log("click");
   };
 
   useEffect(() => {
     setInputFields(playersQtyArray);
-  }, []);
+  }, [currentPage]);
 
   return (
     <form>
       <div className="cardBox">
-        {playersQtyArray.map((el) => {
+        {currentPlayers.map((el) => {
           return (
             <div key={el.id}>
               <SecretSantaCard
@@ -91,7 +92,7 @@ export default function SecretSantaCardGenerator() {
       <Pagination
         currentCards={playersPerPage}
         totalCards={playersQtyArray.length}
-        handlePageChange={handelPageChange}
+        handlePageChange={handlePageChange}
       />
       <div className="button">
         <Button onClick={handleFormSubmit} variant="contained">

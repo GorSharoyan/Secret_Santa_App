@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 //services
@@ -10,7 +10,6 @@ export default function PlayerSelectionInput() {
   const navigate = useNavigate();
 
   const handlePlayerSelectionInput = (event) => {
-    setError(validateNumberOfPlayers(event.target.value));
     setPlayerQty(event.target.value);
   };
 
@@ -21,6 +20,9 @@ export default function PlayerSelectionInput() {
       await navigate("/playingPage");
     }
   };
+  useEffect(() => {
+    setError(validateNumberOfPlayers(playersQty));
+  }, [playersQty]);
 
   return (
     <div>
@@ -32,7 +34,7 @@ export default function PlayerSelectionInput() {
       ></input>
       {error ? (
         <div>
-          <p>Number of players should be even</p>
+          <p>Please enter Number of players</p>
         </div>
       ) : (
         <div></div>

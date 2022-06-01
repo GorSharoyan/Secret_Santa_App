@@ -31,7 +31,7 @@ export default function SecretSantaCardGenerator() {
   init("user_oEXDyu2Xll8SqLLxLLIgw");
 
   // pagination hooks
-  const [playersPerPage] = useState(10);
+  const [playersPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
 
   const createRowsArray = () => {
@@ -75,32 +75,34 @@ export default function SecretSantaCardGenerator() {
   }, [currentPage]);
 
   return (
-    <form>
-      <div className="cardBox">
-        {currentPlayers.map((el) => {
-          return (
-            <div key={el.id}>
-              <SecretSantaCard
-                imageLink={SantaImagesArray[Math.floor(Math.random() * 10)]}
-                number={el.id + 1}
-                name="name"
-                email="email"
-                onChange={(event) => handleInputChange(el.id, event)}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <Pagination
-        currentCards={playersPerPage}
-        totalCards={playersQtyArray.length}
-        handlePageChange={handlePageChange}
-      />
-      <div className="button">
-        <Button onClick={handleFormSubmit} variant="contained">
-          Submit
-        </Button>
-      </div>
-    </form>
+    <div>
+      <form>
+        <div className="cardBox">
+          {currentPlayers.map((el) => {
+            return (
+              <div key={el.id}>
+                <SecretSantaCard
+                  imageLink={SantaImagesArray[Math.floor(Math.random() * 10)]}
+                  number={el.id + 1}
+                  name="name"
+                  email="email"
+                  onChange={(event) => handleInputChange(el.id, event)}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <Pagination
+          currentCards={playersPerPage}
+          totalCards={playersQtyArray.length}
+          handlePageChange={handlePageChange}
+        />
+        <div className="button">
+          <Button onClick={handleFormSubmit} variant="contained">
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }

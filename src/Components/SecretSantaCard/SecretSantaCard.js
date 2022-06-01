@@ -16,8 +16,9 @@ export default function SecretSantaCard({
 }) {
   return (
     <Card className="card">
-      <img src={imageLink} style={{ borderRadius: "30px" }} />
-      <div>
+      <div className="upperCard">
+        <img src={imageLink} style={{ borderRadius: "30px" }} />
+        <br></br>
         <Typography
           gutterBottom
           variant="h6"
@@ -27,7 +28,7 @@ export default function SecretSantaCard({
           Secret Santa {number}
         </Typography>
       </div>
-      <div>
+      <div className="lowerCard">
         <CardContent>
           <FormField name={name} email={email} onChange={onChange} />
         </CardContent>

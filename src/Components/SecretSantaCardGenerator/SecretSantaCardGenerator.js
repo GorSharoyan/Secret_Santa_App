@@ -33,7 +33,7 @@ export default function SecretSantaCardGenerator() {
 
   // pagination hooks
   const playersPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const createRowsArray = () => {
     for (let i = 0; i < playersQty; i++) {

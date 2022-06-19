@@ -10,10 +10,9 @@ export default function Pagination({
 }) {
   let pageCount = [];
 
-  for (let i = 1; i < Math.ceil(totalCards / currentCards); i++) {
+  for (let i = 1; i <= Math.ceil(totalCards / currentCards); i++) {
     pageCount.push(i);
   }
-
   return (
     <div>
       <ol className="pagination">

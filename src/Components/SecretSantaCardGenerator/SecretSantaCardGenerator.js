@@ -58,8 +58,7 @@ export default function SecretSantaCardGenerator() {
   };
 
   const handleFormSubmit = async () => {
-    setError(validatePlayerCardData(inputFields));
-
+    console.log(inputFields);
     if (error === false) {
       const inputValues = inputFields;
       const randomisedValues = randomiseArray(inputValues);
@@ -79,9 +78,8 @@ export default function SecretSantaCardGenerator() {
 
   useEffect(() => {
     setInputFields(playersQtyArray);
-    console.log(validatePlayerCardData(inputFields));
     setError(validatePlayerCardData(inputFields));
-  }, [currentPage]);
+  }, []);
 
   return (
     <div>

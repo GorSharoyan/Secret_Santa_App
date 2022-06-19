@@ -58,7 +58,6 @@ export default function SecretSantaCardGenerator() {
   };
 
   const handleFormSubmit = async () => {
-    console.log(inputFields);
     if (error === false) {
       const inputValues = inputFields;
       const randomisedValues = randomiseArray(inputValues);

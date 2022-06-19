@@ -26,8 +26,7 @@ export default function SecretSantaCardGenerator() {
   const [inputFields, setInputFields] = useState([
     { id: "", name: "", email: " " }
   ]);
-  const [error, setError] = useState(false);
-  //navigation hooks
+  const [error, setError] = useState(true);
   const navigate = useNavigate();
   //Mailing Client
   init("user_oEXDyu2Xll8SqLLxLLIgw");
@@ -59,10 +58,13 @@ export default function SecretSantaCardGenerator() {
   };
 
   const handleFormSubmit = async () => {
+    setError(validatePlayerCardData(inputFields));
+
     if (error === false) {
       const inputValues = inputFields;
       const randomisedValues = randomiseArray(inputValues);
       const playerPairs = createPlayerPairs(randomisedValues);
+      console.log("click 2");
       await playerPairs.map((e) =>
         sendEmailMessage(e.resciever.email, e.resciever.name, e.sender.name)
       );
@@ -71,11 +73,13 @@ export default function SecretSantaCardGenerator() {
   };
 
   const handlePageChange = (pageNumber) => {
+    setInputFields(inputFields);
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
     setInputFields(playersQtyArray);
+    console.log(validatePlayerCardData(inputFields));
     setError(validatePlayerCardData(inputFields));
   }, [currentPage]);
 

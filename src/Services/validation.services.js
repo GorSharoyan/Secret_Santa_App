@@ -16,11 +16,15 @@ export const validateNumberOfPlayers = (value) => {
 //function for validation emtpy data in playerCards
 
 export function validatePlayerCardData(arr) {
+  let error = false;
   arr.map((el) => {
     Object.values(el).map((val) => {
       if (val === " ") {
-        return false;
-      } else return true;
+        error = false;
+      } else {
+        error = true;
+      }
     });
   });
+  return error;
 }

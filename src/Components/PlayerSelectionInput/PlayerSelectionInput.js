@@ -34,7 +34,7 @@ export default function PlayerSelectionInput() {
       ></input>
       {error ? (
         <div>
-          <p>Please enter Number of players</p>
+          <p>Input Empty</p>
         </div>
       ) : (
         <div></div>

@@ -11,9 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div>
         <SwitchRouter />
-      </div>
       <Footer />
     </div>
   );

@@ -6,7 +6,7 @@ import { validateNumberOfPlayers } from "../../Services/validation.services";
 
 export default function PlayerSelectionInput() {
   const [playersQty, setPlayerQty] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const navigate = useNavigate();
 
   const handlePlayerSelectionInput = (event) => {
@@ -37,7 +37,7 @@ export default function PlayerSelectionInput() {
           <p>Input Empty</p>
         </div>
       ) : (
-        <div></div>
+        <div> </div>
       )}
 
       <button onClick={handlePlayerSelectionSubmit}>Submit</button>

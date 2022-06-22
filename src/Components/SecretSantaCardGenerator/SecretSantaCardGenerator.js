@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { init } from "@emailjs/browser";
 
@@ -26,7 +26,8 @@ export default function SecretSantaCardGenerator() {
   const [inputFields, setInputFields] = useState([
     { id: "", name: "", email: " " }
   ]);
-  const [error, setError] = useState(true);
+  let error = true;
+  // const [error, setError] = useState(true);
   const navigate = useNavigate();
   //Mailing Client
   init("user_oEXDyu2Xll8SqLLxLLIgw");
@@ -57,12 +58,11 @@ export default function SecretSantaCardGenerator() {
     setInputFields(values);
   };
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    error = validatePlayerCardData(inputFields);
     if (error === false) {
-      const inputValues = inputFields;
-      const randomisedValues = randomiseArray(inputValues);
-      const playerPairs = createPlayerPairs(randomisedValues);
-      console.log("click 2");
+      const playerPairs = createPlayerPairs(randomiseArray(inputFields));
       await playerPairs.map((e) =>
         sendEmailMessage(e.resciever.email, e.resciever.name, e.sender.name)
       );
@@ -77,7 +77,6 @@ export default function SecretSantaCardGenerator() {
 
   useEffect(() => {
     setInputFields(playersQtyArray);
-    setError(validatePlayerCardData(inputFields));
   }, []);
 
   return (
@@ -103,6 +102,15 @@ export default function SecretSantaCardGenerator() {
           totalCards={playersQtyArray.length}
           handlePageChange={handlePageChange}
         />
+        <div>
+          {error ? (
+            <div>
+              <p>Some inputs are empty</p>
+            </div>
+          ) : (
+            <div> </div>
+          )}
+        </div>
         <div className="button">
           <Button onClick={handleFormSubmit} variant="contained">
             Submit

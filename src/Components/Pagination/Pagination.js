@@ -15,10 +15,10 @@ export default function Pagination({
   }
   return (
     <div>
-      <ol className="pagination">
+      <ul className="pagination">
         {pageCount.map((element) => {
           return (
-            <ui className="pageNumber">
+            <li key={element} className="pageNumber">
               <a
                 className="clicker"
                 onClick={() => {
@@ -27,10 +27,10 @@ export default function Pagination({
               >
                 {element}
               </a>
-            </ui>
+            </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 }

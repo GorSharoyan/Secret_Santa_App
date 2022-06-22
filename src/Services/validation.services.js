@@ -19,10 +19,10 @@ export function validatePlayerCardData(arr) {
   let error = false;
   arr.map((el) => {
     Object.values(el).map((val) => {
-      if (val === " ") {
-        error = false;
-      } else {
+      if (val === "") {
         error = true;
+      } else {
+        error = false;
       }
     });
   });

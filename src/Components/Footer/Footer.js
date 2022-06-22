@@ -7,9 +7,9 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <div className="root">
-      <ul>
-        <ol className="container">© Gor Sharoyan 2022 Beta</ol>
-        <ol className="container">gor.sharoyan95@gmail.com</ol>
+      <ul className="container">
+        <li>© Gor Sharoyan 2022 Beta</li>
+        <li>gor.sharoyan95@gmail.com</li>
       </ul>
     </div>
   );

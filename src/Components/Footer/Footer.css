@@ -4,9 +4,19 @@
   height: 80px; 
 }
   
-.container {
+.contacts-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   list-style-type: none; 
-  }
+}
+
+.social-media-bar {
+  margin-right: 25px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  list-style-type: none; 
+}
